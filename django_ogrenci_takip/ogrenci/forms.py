@@ -59,17 +59,6 @@ class NotlarForm(forms.ModelForm):
             "proje",
         ]
 
-        """dersId = forms.ModelMultipleChoiceField(
-            queryset=models.Dersler.objects.all(),
-            widget=forms.SelectMultiple(attrs={"class": "form-control"}),
-        )"""
-
-        """ogrenciId = forms.ModelChoiceField(
-            queryset=models.Ogrenciler.objects.all(),
-            empty_label=None,
-            widget=forms.SelectDateWidget(attrs={"class": "form-control"}),
-        )"""
-
         labels = {
             "dersId": "Ders Adı",
             "ogrenciId": "Öğrenci Adı",
