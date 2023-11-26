@@ -1,0 +1,51 @@
+<div class="container mt-3">
+    <h2>Notlar</h2>
+    <table class="table table-hover mt-3">
+        <thead>
+        <tr>
+            <th>Ders Ad</th>
+            <th>Ad Soyad</th>
+            <th>Sınav 1</th>
+            <th>Sınav 2</th>
+            <th>Sınav 3</th>
+            <th>Proje</th>
+            <th>Ortalama</th>
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for notVerisi in notlarListesi %}
+        <tr>
+            {% for ders in notVerisi.dersId.all %}
+            <td>{{ ders.dersAd }}</td>
+            {% endfor %}
+            {% for ogrenci in notVerisi.ogrenciId.all %}
+            <td>{{ ogrenci.ogrenciAd }} {{ ogrenci.ogrenciSoyad }}</td>
+            {% endfor %}
+            <td>{{ notVerisi.sinav1 }}</td>
+            <td>{{ notVerisi.sinav2 }}</td>
+            <td>{{ notVerisi.sinav3 }}</td>
+            <td>{{ notVerisi.proje }}</td>
+            <td>{{ notVerisi.ortalama }}</td>
+            <td>
+                {% if notVerisi.durum %}
+                <p class="bg-success">Geçti</p>
+                {% else %}
+                <p class="bg-danger">Kaldı</p>
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'not_guncelle' notVerisi.id %}" class="btn btn-outline-success">Güncelle</a>
+                <a href="{% url 'not_sil' notVerisi.id %}" class="btn btn-outline-danger">Sil</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <a  href="{% url 'not_ekle' %}" type="button" class="btn btn-primary">Yeni Not Ekle</a>
+</div>

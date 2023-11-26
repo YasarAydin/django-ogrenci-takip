@@ -1,0 +1,29 @@
+<div class="container mt-3">
+    <h2>Kulüpler</h2>
+    <table class="table table-hover mt-3">
+        <thead>
+        <tr>
+            <th>Kulup Ad</th>
+            <th>Kulup Kontenjan</th>
+            <th>İşlemler</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for kulupVerisi in kuluplerListesi %}
+        <tr>
+            <td>{{ kulupVerisi.kulupAd }}</td>
+            <td>{{ kulupVerisi.kulupKontenjan }}</td>
+            <td>
+                <a href="{% url 'kulup_guncelle' kulupVerisi.id %}" class="btn btn-outline-success">Güncelle</a>
+                <a href="{% url 'kulup_sil' kulupVerisi.id %}" class="btn btn-outline-danger">Sil</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <a href="{% url 'kulup_ekle' %}" type="button" class="btn btn-primary">Yeni Kulüp Ekle</a>
+</div>

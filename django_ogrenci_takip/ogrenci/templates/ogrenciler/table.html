@@ -1,0 +1,33 @@
+<div class="container mt-3">
+    <h2>Öğrenciler</h2>
+    <table class="table table-hover mt-3">
+            <thead>
+            <tr>
+                <th>Öğrenci Ad</th>
+                <th>Öğrenci Soyad</th>
+                <th>Öğrenci Cinsiyet</th>
+                <th>Öğrenci Kulüp</th>
+                <th>İşlemler</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for ogrVerisi in ogrencilerVerisi %}
+            <tr>
+                <td>{{ ogrVerisi.ogrenciAd }}</td>
+                <td>{{ ogrVerisi.ogrenciSoyad }}</td>
+                <td>{{ ogrVerisi.ogrenciCinsiyet }}</td>
+                <td>{{ ogrVerisi.ogrenciKulup }}</td>
+                <td>
+                    <a href="{% url 'ogrenci_guncelle' ogrVerisi.id %}" class="btn btn-outline-success">Güncelle</a>
+                    <a href="{% url 'ogrenci_sil' ogrVerisi.id %}" class="btn btn-outline-danger">Sil</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+        <a href="{% url 'ogrenci_ekle' %}" type="button" class="btn btn-primary mb-5">Yeni Öğrenci Ekle</a>
+
+</div>
